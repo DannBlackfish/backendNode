@@ -1,6 +1,6 @@
 const express = require('express');
 const response = require('../../network/response');
-
+const controller = require('./controller')
 const router = express.Router();
 
 router.get('/', function(req, res){
@@ -20,14 +20,14 @@ router.patch('/', function(req, res){
 })
 
 router.post('/', function(req, res){
-    console.log(req.query);
-    if (req.query.error == "ok") {
-        response.error(req, res, 'Unexpected error', 500, 'It is just a simulated error');
-    } else {
-        response.success(req, res, 'Correctly create', 201);
-    }
-    //return a status
-    //res.status(201).send({error: '', body: 'Created correctly'});
-})
+
+    controller.addMessage(req.body.user, req.body.message)
+        .then((fullMessage) => {
+            response.success(req, res, fullMessage, 201);
+        })
+        .catch(e => {
+            response.error(req, res, 'null information', 400, 'Controller error');
+        });
+});
 
 module.exports = router;
