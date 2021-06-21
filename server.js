@@ -15,10 +15,15 @@ router.get('/message', function(req, res){
     res.send('List of messages');
 })
 
-router.post('/message', function(req, res){
+router.patch('/message', function(req, res){
     console.log(req.query)
     console.log(req.body)
     res.send('Mensaje' + req.body.text + ' correctly added');
+})
+
+router.post('/message', function(req, res){
+    //return a status
+    res.status(201).send({error: '', body: 'Created correctly'});
 })
 
 // app.use('/', function (req, res) {
