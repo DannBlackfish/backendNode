@@ -35,9 +35,7 @@ router.post('/message', function(req, res){
     //res.status(201).send({error: '', body: 'Created correctly'});
 })
 
-// app.use('/', function (req, res) {
-//     res.send('Hola');
-// });
+app.use('/app', express.static('public'));
 
 app.listen(3000);
 
