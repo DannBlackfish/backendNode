@@ -4,19 +4,13 @@ const controller = require('./controller')
 const router = express.Router();
 
 router.get('/', function(req, res){
-    console.log(req.headers);
-    //specific hedears to our client:
-    res.header({
-        "custom-header": "Our personalized value"
+    controller.getMessage()
+    .then((messageList) => {
+        response.success(req, res, messageList, 200);
     })
-    //res.send('List of messages');
-    response.success(req, res, 'List of messages');
-})
-
-router.patch('/', function(req, res){
-    console.log(req.query)
-    console.log(req.body)
-    res.send('Mensaje' + req.body.text + ' correctly added');
+    .catch(e => {
+        response.error(req, res, 'Unexpected Error', 500, e);
+    })
 })
 
 router.post('/', function(req, res){
