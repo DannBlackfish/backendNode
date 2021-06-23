@@ -18,5 +18,14 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.14",
     "multer": "^1.4.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DannBlackfish/backendNode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DannBlackfish/backendNode/issues"
+  },
+  "homepage": "https://github.com/DannBlackfish/backendNode#readme"
 }

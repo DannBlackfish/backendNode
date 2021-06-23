@@ -7,11 +7,17 @@ function addMessage(chat, user, message) {
             reject('Incorrect data') 
             return false;
         }
+
+        let fileUrl = '';
+        if(file) {
+            fileUrl = 'http://localhost3000/app/files/' + file.filename;
+        }
         const fullMessage = {
             chat: chat,
             user: user,
             message: message,
             date: new Date(),
+            file: fileUrl,
         }
         store.add(fullMessage)
         resolve(fullMessage)
@@ -52,7 +58,6 @@ function deleteMessage(id) {
             })
     })
 }
-
 
 module.exports = {
     addMessage,
