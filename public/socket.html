@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <h1>Hello, I'm a static</h1>
+    <script>
+        var socket = io.connect('http://localhost:3000', {
+            forceNew: True,
+        });
+
+        socket.on('message', function(data) {
+            console.log(data)
+        })
+    </script> 
+    </body>
+</html>
